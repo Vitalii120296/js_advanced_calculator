@@ -3,14 +3,12 @@
 /**
  * @return {object}
  */
-function makeCalculator(result = 0) {
+function makeCalculator() {
   const calculate = {
-    result,
+    result: 0,
 
-    operate(action, value = 0) {
-      this.result = action(value);
-
-      return this.result;
+    operate(action, value) {
+      return action.call(this, value);
     },
 
     add(value = 0) {
